@@ -1,0 +1,35 @@
+
+
+<?php if(isset($_GET['auth']) && $_GET['auth'] == 'not'){ ?>
+	<div class="alert alert-danger mt-3 text-center">
+		Você precisa fazer login.
+	</div>
+<?php } ?>
+
+<?php if (!isset($_SESSION['autenticado']) || !$_SESSION['autenticado']) { ?>
+
+	<div class="text-center mt-5 pb-5 pt-4">
+		<h2>Faça login para ter acesso ao sistema</h2>
+
+		<div class="mt-5">
+			<a href="/login" class="btn btn-primary btn-lg btn-login"><i class="fas fa-user-circle fa-sm mr-3"></i>Fazer Login</a>
+			<a href="/registro" class="btn btn-success btn-lg btn-login"><i class="fas fa-user-circle fa-sm mr-3"></i>Criar Conta</a>
+		</div>
+	</div>
+
+<?php } else { ?>
+
+	<div class="text-center mt-5 pb-5 pt-4">
+		<h2 class="h1 m-0">
+			<i class="fas fa-user-circle fa-2x mb-3"></i><br>
+			<?= $_SESSION['nome'] ?>
+		</h2>
+		<small class="d-block text-muted"><?= $_SESSION['email'] ?></small>
+
+		<div class="mt-5">
+			<a href="/dashboard" class="btn btn-success btn-lg btn-login">Dashboard <i class="fas fa-arrow-circle-right ml-3" style="font-size: 14px"></i></a>
+			<a href="/logout" class="btn btn-danger btn-lg btn-login">Logout <i class="fas fa-sign-out-alt ml-3" style="font-size: 14px"></i></a>
+		</div>
+	</div>
+<?php } ?>
+

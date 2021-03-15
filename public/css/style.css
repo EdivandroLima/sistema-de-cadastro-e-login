@@ -1,0 +1,58 @@
+
+
+h2 {
+    font-size: calc(1.3rem + 2.5vw)
+}
+nav {
+    background: #23282e
+}
+.btn-toggle {
+    background: none;
+    color: white;
+}
+
+@media (min-width: 768px) {
+		
+	/* .nav-link:hover {
+		opacity: .8;
+	} */
+    .dropdown .dropdown-menu {
+        display: block;
+        visibility: hidden;
+        margin-top: -1px;
+        opacity: 0;
+        transition: all .2s;
+    }
+    .dropdown:hover .dropdown-menu {
+        visibility: visible;
+        opacity: 1;
+    }
+    .navbar-dark .navbar-nav .nav-link:hover, .dropdown:hover .nav-link {
+        opacity: .8;
+    }
+    .nav-link {
+        text-transform: uppercase;
+    }
+    .nav-item {
+        margin-left: 10px;
+        font-size: 1em
+    }
+
+}
+
+.btn-login {
+    padding: 10px 40px;
+    margin:  5px;
+}
+@media (max-width: 576px) {
+    .btn-login {
+        display: block
+    }
+    .btn-login {
+        padding: 8px 20px;
+    }
+}
+
+
+
+

@@ -1,0 +1,63 @@
+
+
+
+<div class="row pt-5">
+
+	<div class="col-12 col-md-4 m-auto">
+		<div class="card mb-5">
+			<div class="card-header">
+				Preencha o formulário
+			</div>
+			<div class="card-body">
+				<?php if(isset($_GET['erro']) && $_GET['erro'] == 'form'){ ?>
+					<div class="alert alert-danger">
+						Formulário não está correto!
+					</div>
+				<?php } ?>
+				<?php if(isset($_GET['erro']) && $_GET['erro'] == 'senha_min'){ ?>
+					<div class="alert alert-danger">
+						Senha tem que ter no minimo 6 caracteres!
+					</div>
+				<?php } ?>
+				<?php if(isset($_GET['erro']) && $_GET['erro'] == 'form_senha'){ ?>
+					<div class="alert alert-danger">
+						A senha que você repetiu não é a mesma!
+					</div>
+				<?php } ?>
+				<?php if(isset($_GET['erro']) && $_GET['erro'] == 'usuario'){ ?>
+					<div class="alert alert-danger">
+						E-mail já foi registrado!
+					</div>
+				<?php } ?>
+
+				<?php if(isset($_GET['info']) && $_GET['info'] == 'success'){ ?>
+					<div class="alert alert-success">
+						Registrado com sucesso! <a href="/login">Fazer Login</a>
+					</div>
+				<?php } ?>
+
+				<form method="post" action="/registro/salvar">
+					<div class="form-group">
+						<label for="nome" class='sr-only'>Nome</label>
+						<input type="text" name="nome" class="form-control" placeholder="Nome" id="nome" required>
+					</div>
+					<div class="form-group">
+						<label for="email" class='sr-only'>E-mail</label>
+						<input type="email" name="email" class="form-control" placeholder="E-mail" id="email" required>
+					</div>
+					<div class="form-group">
+						<label for="senha" class='sr-only'>Senha</label>
+						<input type="password" name="senha" class="form-control" placeholder="Senha" id="senha" required>
+					</div>
+
+					<div class="form-group">
+						<label for="r-senha" class='sr-only'>Repetir Senha</label>
+						<input type="password" name="r-senha" class="form-control" placeholder="Repetir Senha" id="r-senha" required>
+					</div>
+
+					<button type="submit" class="btn btn-block btn-primary btn-click">Registrar-se</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
