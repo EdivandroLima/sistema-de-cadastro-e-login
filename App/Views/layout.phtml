@@ -16,20 +16,14 @@
 	<header>
 		<nav class="navbar navbar-dark navbar-expand-lg">
 			<div class="container">
-				<h1><a href="/" class="navbar-brand">Servic.. Prove.. LT..</a></h1>
+				<h1><a href="/" class="navbar-brand">Teste Dev</a></h1>
 				<button type="button" class="d-block d-lg-none btn btn-toggle" data-toggle='collapse' data-target='#navbar-menu'>
 					<i class="fas fa-bars fa-lg"></i>
 				</button>
 				<div class="navbar-collapse collapse" id="navbar-menu">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item dropdown">
-							<a href="#" class="nav-link text-white dropdown-toggle" data-toggle='dropdown'>Entrar</a>
-							<div class="dropdown-menu text-uppercase">
-								<a href="/login" class="dropdown-item"><i class="fas fa-user-circle fa-sm mr-1"></i> Entrar com E-mail</a>
-
-								<a href="/login" class="dropdown-item"><i class="fas fa-user-circle fa-sm mr-1"></i> Entrar com a conta do Google</a>
-								
-							</div>
+						<li class="nav-item">
+							<a href="/login" class="nav-link text-white">Entrar</a>
 						</li>
 						<li class="nav-item">
 							<a href="/registro" class="nav-link text-white ">Registrar-se</a>
@@ -54,5 +48,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script>
+		$('.btn-click').click(function() {
+			$(this).css('cursor', 'not-allowed').addClass('active')
+		})
+		$('input').keyup(function() {
+			$('.btn-click').css('cursor', 'pointer').removeClass('active')
+		})
+    </script>
 </body>
 </html>

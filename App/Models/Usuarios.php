@@ -22,17 +22,20 @@
 		// validar registro
 		public function validarRegistro() {
 
-			$form= true;
-
 			if (strlen($this->__get('nome')) < 3) {
-				$form= false;
+				header('Location: /registro?erro_user_min');
+				exit();	
 			}
-			if (strlen($this->__get('email')) < 3) {
-				$form= false;
+
+			if (!preg_match('/[A-Za-z]/', $senha) || !preg_match('/[0-9]/', $senha)) {
+				header('Location: /registro?erro=senha_invalida'); // 'Senha tem que ter caracteres e números';
 			}
-			if (strlen($_POST['senha']) < 6) {
-				
-				header('Location: /registro?erro=senha_min&'.strlen($_POST['senha']));
+			if(!preg_match('/^[\w$@]{6,}$/', $senha)) {
+				header('Location: /registro?erro=senha_min'); // 'Senha tem que tem 6 ou mais caracteres';
+			}
+
+			if ($_POST['r-senha'] != $_POST['senha']) {
+				header('Location: /registro?erro=form_senha');
 				exit();	
 			}
 
@@ -42,16 +45,9 @@
 			$stmt->bindValue(':email', $this->email);
 			$stmt->execute();
 
-
-
-			if (!$form) {
-				header('Location: /registro?erro=form');
-				exit();				
-			}
-
 			// se o email já foi cadastrado, volta para a página com um erro
 			if ($stmt->fetch(\PDO::FETCH_OBJ)) {
-				header('Location: /registro?erro=usuario');
+				header('Location: /registro?erro=email');
 				exit();	
 			}
 
@@ -75,14 +71,11 @@
 		// Autenticação de usuário
 		public function autenticarUsuario() {
 
-			$query= 'select nome, email, senha from tb_usuarios where email = :email && senha = :senha';
+			$query= 'select nome, email, senha from tb_usuarios where email = :email';
 			$stmt= $this->db->prepare($query);
 			$stmt->bindValue(':email', $this->email);
-			$stmt->bindValue(':senha', $this->senha);
 
 			$stmt->execute();
-
-			$autenticar= true;
 
 			return $stmt->fetch(\PDO::FETCH_ASSOC);
 

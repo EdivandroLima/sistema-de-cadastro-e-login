@@ -13,13 +13,19 @@
 					</div>
 				<?php } ?>
 				<form method="post" action="/login/auth">
+
 					<div class="form-group">
 						<label for="email" class='sr-only'>E-mail</label>
-						<input type="email" id="email" name="email" class="form-control" placeholder="E-mail" required>
+						<input type="email" id="email" name="email" class="form-control" value="<?= (isset($_COOKIE['sisgen_user']))? $_COOKIE['sisgen_user']:'' ?>" placeholder="E-mail" required>
 					</div>
 					<div class="form-group">
 						<label for="senha" class='sr-only'>Senha</label>
 						<input type="password" name="senha" class="form-control" placeholder="Senha" id="senha" required>
+					</div>
+
+					<div class="form-group">
+						<input type="checkbox" name="lembrar_me" id="lembrar_me">
+						<label for="lembrar_me">Manter conectado</label>
 					</div>
 
 					<button type="submit" class="btn btn-block btn-primary btn-click">Entrar</button>

@@ -1,6 +1,6 @@
 <?php
 	namespace App\Controllers;
-
+	
 	require_once "../App/Controllers/Action.php";
 	require_once "../App/Models/Usuarios.php";
 
@@ -12,12 +12,6 @@
 		public function index() {
 			// 'index' vai ser para selecionar o arquivo 'index.phtml' e layout para selecionar o arquivo 'layout.phtml'
 			$this->render('index', 'layout');
-
-		}
-
-		public function sobre() {
-
-			$this->render('sobre', 'layout');
 		}
 
 		public function login() {
@@ -30,65 +24,50 @@
 			$this->render('registro', 'layout');
 		}
 
-
 		public function registroSalvar() {
 
 			$usuario= new Usuarios();
 
 			$usuario->__set('nome', htmlentities($_POST['nome']));
 			$usuario->__set('email', htmlentities($_POST['email']));
-			$usuario->__set('senha', md5($_POST['senha']));
-
-			// se a senha e repetir senha forem diferentes
-			if (md5($_POST['r-senha']) != $usuario->__get('senha')) {
-				header('Location: /registro?erro=form_senha');
-				exit();	
-			}
+			$usuario->__set('senha', password_hash($_POST['senha'], PASSWORD_BCRYPT));
 
 			// se 'validarRegistro()' for true, seta o registro
 			if ($usuario->validarRegistro()) {
 				$usuario->setRegistro();
 				header('Location: /registro?info=success');
 			}
-			
-			
 		}
 
 
 		public function autenticar() {
-			$usuario= new Usuarios();
 
+			$usuario= new Usuarios();
 			$usuario->__set('email', htmlentities($_POST['email']));
-			$usuario->__set('senha', md5($_POST['senha']));
 
 			$dados= $usuario->autenticarUsuario();
 
-			// se usuário não for encontrado
-			if (empty($dados)) {
-				header('Location: /login?login=erro');
-			}
-
-			else {
+			if (!empty($dados) && password_verify($_POST['senha'], $dados['senha'])) {
 				// se login for sucesso vai criar as sessions
 				session_start();
 				$_SESSION['nome']= $dados['nome'];
 				$_SESSION['email']= $dados['email'];
 				$_SESSION['autenticado']= true;
 
+				if (isset($_POST['lembrar_me'])) {
+					$this->lembrarMe($dados['email']);
+				}
 				header('Location: /dashboard');
 			}
-
-
-
+			else {
+				header('Location: /login?login=erro');
+			}
 		}
-
 
 		public function dashboard() {
 			// validar acesso
 			$this->validaAutenticacao();
-
 			$this->render('dashboard', 'layoutDashboard');
-
 		}
 
 		// vai listar todos os usuários
@@ -97,9 +76,7 @@
 			$usuarios= new Usuarios();
 			$this->todosUsuarios= $usuarios->todosUsuarios();
 			$this->render('usuarios', 'layoutDashboard');
-
 		}
-
 
 		// se não tiver autenticado pelo login vai ser redirecionado para '/?auth=not'
 		public function validaAutenticacao() {
@@ -108,17 +85,21 @@
 			if (!isset($_SESSION['autenticado']) || !$_SESSION['autenticado']) {
 				header('Location: /?auth=not');
 			}
-
 		}
-
 
 		// deslogar, destruindo a sesssion
 		public function logout() {
 			session_start();
 			session_destroy();
+			$validade= time() - 3600;
+			$cookie= setcookie('sisgen_user', '', $validade, "/", "", false, true);
 			header('Location: /');
 		}
-		
+
+		public function lembrarMe($user) {
+			$validade= strtotime('+1 month');
+			$cookie= setcookie('sisgen_user', $user, $validade, "/", "", false, true);
+		}
 	}
 	
 ?>

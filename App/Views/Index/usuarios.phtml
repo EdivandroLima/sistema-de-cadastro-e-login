@@ -14,7 +14,7 @@
 		<tr>
 			<td>#<?= $usuario['id'] ?></td>
 			<td><?= $usuario['nome'] ?></td>
-			<td><?= $usuario['email'] ?></td>
+			<td><?= '*******@'.explode('@', $usuario['email'])[1] ?></td>
 		</tr>
 		<?php } ?>
 

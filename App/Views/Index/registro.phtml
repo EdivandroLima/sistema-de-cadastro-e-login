@@ -19,12 +19,17 @@
 						Senha tem que ter no minimo 6 caracteres!
 					</div>
 				<?php } ?>
+				<?php if(isset($_GET['erro']) && $_GET['erro'] == 'senha_invalida'){ ?>
+					<div class="alert alert-danger">
+						Senha tem que ter caracteres e números
+					</div>
+				<?php } ?>
 				<?php if(isset($_GET['erro']) && $_GET['erro'] == 'form_senha'){ ?>
 					<div class="alert alert-danger">
 						A senha que você repetiu não é a mesma!
 					</div>
 				<?php } ?>
-				<?php if(isset($_GET['erro']) && $_GET['erro'] == 'usuario'){ ?>
+				<?php if(isset($_GET['erro']) && $_GET['erro'] == 'email'){ ?>
 					<div class="alert alert-danger">
 						E-mail já foi registrado!
 					</div>
@@ -43,7 +48,7 @@
 					</div>
 					<div class="form-group">
 						<label for="email" class='sr-only'>E-mail</label>
-						<input type="email" name="email" class="form-control" placeholder="E-mail" id="email" required>
+						<input type="email" name="email" class="form-control" placeholder="E-mail" id="email" required="required">
 					</div>
 					<div class="form-group">
 						<label for="senha" class='sr-only'>Senha</label>

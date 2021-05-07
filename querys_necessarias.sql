@@ -6,9 +6,8 @@ CREATE TABLE tb_usuarios(
     id int not null PRIMARY KEY AUTO_INCREMENT,
     nome varchar(100) not null,
     email varchar(100) not null,
-    senha varchar(32) not null
+    senha varchar(255) not null
 );
-
 
 /* Usuários para testes */
 /* gerado em https://www.generatedata.com/ */
