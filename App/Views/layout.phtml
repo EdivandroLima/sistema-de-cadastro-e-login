@@ -1,60 +1,64 @@
-<?php session_start() ?><!DOCTYPE html>
+<?php session_start() ?>
+<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-	<title>Teste Dev - <?= ucfirst($action) ?></title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Bootstrap CSS -->
+    <title>Teste Dev - <?= ucfirst($action) ?></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <!-- Fontawesome -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <!-- Style -->
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 
 </head>
+
 <body class="bg-light">
-	<header>
-		<nav class="navbar navbar-dark navbar-expand-lg">
-			<div class="container">
-				<h1><a href="/" class="navbar-brand">Teste Dev</a></h1>
-				<button type="button" class="d-block d-lg-none btn btn-toggle" data-toggle='collapse' data-target='#navbar-menu'>
-					<i class="fas fa-bars fa-lg"></i>
-				</button>
-				<div class="navbar-collapse collapse" id="navbar-menu">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
-							<a href="/login" class="nav-link text-white">Entrar</a>
-						</li>
-						<li class="nav-item">
-							<a href="/registro" class="nav-link text-white ">Registrar-se</a>
-						</li>
-						<li class="nav-item">
-							<a href="https://github.com/EdivandroLima" target="_blank" class="nav-link text-white"><i class="fab fa-github fa-sm"></i> Edivandro Lima</a>
-						</li>
-					</ul>
+    <header>
+        <nav class="navbar navbar-dark navbar-expand-lg">
+            <div class="container">
+                <h1><a href="/" class="navbar-brand">Teste Dev</a></h1>
+                <button type="button" class="d-block d-lg-none btn btn-toggle" data-toggle='collapse' data-target='#navbar-menu'>
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <div class="navbar-collapse collapse" id="navbar-menu">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link text-white">Entrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/registro" class="nav-link text-white ">Registrar-se</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://github.com/EdivandroLima" target="_blank" class="nav-link text-white"><i class="fab fa-github fa-sm"></i> Edivandro Lima</a>
+                        </li>
+                    </ul>
 
-				</div>
-			</div>
-		</nav>
-	</header>
-	<div class="container">
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
 
-		<?php require "../App/Views/Index/$action.phtml"; ?>
+        <?php require "../App/Views/Index/$action.phtml"; ?>
 
-	</div>
+    </div>
 
 
-	<!-- JavaScript -->
+    <!-- JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script>
-		$('.btn-click').click(function() {
-			$(this).css('cursor', 'not-allowed').addClass('active')
-		})
-		$('input').keyup(function() {
-			$('.btn-click').css('cursor', 'pointer').removeClass('active')
-		})
+        $('.btn-click').click(function() {
+            $(this).css('cursor', 'not-allowed').addClass('active')
+        })
+        $('input').keyup(function() {
+            $('.btn-click').css('cursor', 'pointer').removeClass('active')
+        })
     </script>
 </body>
+
 </html>

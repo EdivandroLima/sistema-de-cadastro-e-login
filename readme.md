@@ -5,8 +5,13 @@ Previa do projeto online: [Veja aqui](http://sistema-de-cadastro-e-login.epizy.c
 - [x] HTML5
 - [x] CSS3
 - [x] Fontawesome
-- [x] Bootstrap
-- [x] PHP
+- [x] Bootstrap 4.1
+- [x] PHP 7
 - [x] MySQL
 
+## Instalação
+- Executar o código que está em 'queries_necessarias.sql' no MySQL
+- Configurar o banco de dados em 'App/Connection.php'
+
+## Preview
 ![Preview](./public/img/preview.png)
