@@ -1,0 +1,18 @@
+{
+    "name": "edivandro/sistema-de-cadastro-e-login",
+    "authors": [
+        {
+            "name": "Edivandro Lima",
+            "email": "ml596923@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/",
+            "Core\\": "Core/"
+        }
+    },
+    "require": {
+        "respect/validation": "^2.2"
+    }
+}

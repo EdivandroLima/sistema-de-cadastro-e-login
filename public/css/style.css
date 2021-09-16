@@ -1,3 +1,4 @@
+
 h2 {
     font-size: calc(1.3rem + 2.5vw)
 }
@@ -13,14 +14,13 @@ nav {
 
 @media (min-width: 768px) {
 
-    /* .nav-link:hover {
-        opacity: .8;
-    } */
     .dropdown .dropdown-menu {
         display: block;
         visibility: hidden;
         margin-top: -1px;
         opacity: 0;
+        -webkit-transition: all .2s;
+        -o-transition: all .2s;
         transition: all .2s;
     }
 
@@ -42,7 +42,6 @@ nav {
         margin-left: 10px;
         font-size: 1em
     }
-
 }
 
 .btn-login {

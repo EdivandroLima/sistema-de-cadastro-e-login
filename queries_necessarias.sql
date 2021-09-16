@@ -1,3 +1,5 @@
+
+
 CREATE DATABASE bd_usuarios;
 
 use bd_usuarios;
@@ -9,8 +11,9 @@ CREATE TABLE tb_usuarios(
     senha varchar(255) not null
 );
 
-/* Usuários para testes */
-/* gerado em https://www.generatedata.com/ */
+-- (Opcional)
+-- Usuários para testes
+-- Gerado em https://www.generatedata.com/
 
 INSERT INTO tb_usuarios (nome,email,senha) VALUES ("Yoshio","cursus.Integer@seddui.net",md5("consequat")),("Lila","sagittis.Nullam.vitae@luctus.net",md5("vehicula")),("Mark","est.tempor@pedeCumsociis.com",md5("tempor"));
 
